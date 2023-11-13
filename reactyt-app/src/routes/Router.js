@@ -2,24 +2,24 @@ import * as React from "react";
 import { useRoutes } from "react-router-dom";
 import Home from "../features/Home/Home";
 import VideoDetails from "../features/VideoDetails/VideoDetails";
-import Layout from "../layout/Layout";
+import YtLayout from "../layout/YtLayout";
 
 
 export default function Router() {
-  return useRoutes([
-    {
-      path: "/",
-      element: <Layout />,
-      children: [
+    return useRoutes([
         {
-          path: "/Home",
-          element: <Home />,
+            path: "/",
+            element: <YtLayout />,
+            children: [
+                {
+                    path: "/Home",
+                    element: <Home />,
+                },
+                {
+                    path: "/VideoDetails",
+                    element: <VideoDetails />,
+                },
+            ],
         },
-        {
-          path: "/VideoDetails",
-          element: <VideoDetails />,
-        },
-      ],
-    },
-  ]);
+    ]);
 }
