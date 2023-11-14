@@ -29,19 +29,29 @@ const YouTubeSearch = () => {
                 }}>Buscar</button>
             </div>
             {error && <p>Hubo un error al buscar los videos</p>}
-            <div className='VideoContainer'>
-                {videos && videos.length > 0 ? (
-                    videos.map((video, index) => (
-                        <div className='VideoPlayer' key={index}>
-                            <h2>{video.snippet.title}</h2>
-                            <YouTubePlayer videoId={video.id.videoId} ></YouTubePlayer>
-                        </div>
-                    ))
-                ) : (
-                    <p>No se encontraron videos.</p>
-                )}
-            </div>
+            {videos && videos.length > 0 ? (
+    <div className='VideoContainer'>
+        <div className='MainVideo'>
+            <YouTubePlayer videoId={videos[0].id.videoId} />
+            <h2>{videos[0].snippet.title}</h2>
+            <button onClick={()=> {} }>Detalles</button>
         </div>
+        <div className='SideVideos'>
+            {videos.slice(1, 4).map((video, index) => (
+                <div className='VideoPlayer' key={index}>
+                    <YouTubePlayer videoId={video.id.videoId} />
+                    <h2 style={{ fontSize: '1rem'}}>{video.snippet.title}</h2>
+                </div>
+                
+            ))}
+            <h2 style={{ fontSize: '1.5rem'}}>Cantidad de videos vistos:</h2>
+        </div>
+        </div>
+        ) : (
+            <p>No se encontraron videos.</p>
+        )}
+                
+    </div>
     );
 }
 
