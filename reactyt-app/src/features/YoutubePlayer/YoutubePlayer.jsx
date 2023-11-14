@@ -3,12 +3,12 @@ import YouTube from 'react-youtube';
 import './YoutubePlayer.css';
 
 
-const YouTubePlayer = ({videoId}) => {
+const YouTubePlayer = ({ videoId }) => {
     const opts = {
-        height: '390',
-        width: '640',
+        height: 'auto',
+        width: '75%',
         playerVars: {
-            autoplay: 0 ,
+            autoplay: 0,
         },
     };
 

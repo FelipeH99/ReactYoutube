@@ -38,6 +38,9 @@ button {
   border: 1px solid #ccc;
 }
 
-.container {
-  margin: 10px;
+
+* {
+
+  box-sizing: border-box;
+
 }
