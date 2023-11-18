@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     padding: 20px;
-    background-color: #f9f9f9;
-    width: 100%;
+    width: 60%;
+    justify-self: center;
 }
 
 .SearchForm input {
@@ -21,6 +21,16 @@
     background-color: #ff0000;
     color: white;
     cursor: pointer;
+}
+
+.SearchForm button:hover {
+    background-color: #cc0000;
+}
+
+.SearchForm button:active {
+    background-color: #323832;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }
 
 .VideoContainer {
@@ -54,7 +64,7 @@
 .videoData {
     grid-area: data;
     word-wrap: break-word;
-    max-width: 100%;
+    max-width: 80%;
     padding: 0.3rem;
 }
 
@@ -63,7 +73,20 @@
 }
 
 .videoData>button {
-    width: 100%;
+    width: 30%;
+
+
+
+}
+
+.videoData>button:hover {
+    background-color: grey;
+}
+
+.videoData>button:active {
+    background-color: #323832;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }
 
 .mainContent {
@@ -82,11 +105,13 @@
 
 .SideVideos {
     display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    height: fit-content;
+    grid-template-rows: r epeat(3, 1fr);
+    height: max-content;
     grid-area: side;
     row-gap: 1rem;
     padding: 0.3rem;
+    max-width: var(ytd-watch-flexy-max-player-width);
+    min-width: var(ytd-watch-flexy-min-player-width);
 }
 
 .sideVideo {

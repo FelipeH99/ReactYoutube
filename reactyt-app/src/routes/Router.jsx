@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useRoutes } from "react-router-dom";
-import Home from "../features/Home/Home";
 import VideoDetails from "../features/VideoDetails/VideoDetails";
+import YouTubeSearch from "../features/YoutubeSearch/YoutubeSearch";
 import YtLayout from "../layout/YtLayout";
 
 
@@ -13,10 +13,11 @@ export default function Router() {
             children: [
                 {
                     path: "/Home",
-                    element: <Home />,
+                    element: <YouTubeSearch />
+                    ,
                 },
                 {
-                    path: "/VideoDetails",
+                    path: "/details/:videoId",
                     element: <VideoDetails />,
                 },
             ],
