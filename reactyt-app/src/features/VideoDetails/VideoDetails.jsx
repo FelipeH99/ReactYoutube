@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import YouTubePlayer from '../YoutubePlayer/YoutubePlayer';
 import './VideoDetails.css';
 
 const VideoDetails = () => {
@@ -18,17 +17,22 @@ const VideoDetails = () => {
     }, [videoId]);
 
     return (
-        <div className='Detalles'>
-            {video && (
-                <>
-                    <YouTubePlayer videoId={video.id} />
-                    <h2>{video.snippet.title}</h2>
-                    <p>{video.snippet.description}</p>
-                    {/* Aquí puedes agregar más detalles del video como las vistas, los likes, etc. */}
-                </>
-            )}
-        </div>
+        <>
+            <button onClick={() => window.history.back()}>Volver</button>
+            <div className='Detalles'>
+
+                {video && (
+                    <>
+                        <img src={video.snippet.thumbnails.standard.url} alt={video.snippet.title} />
+                        <h2>{video.snippet.title}</h2>
+                        <p>{video.snippet.description}</p>
+                        {/* Aquí puedes agregar más detalles del video como las vistas, los likes, etc. */}
+                    </>
+                )}
+            </div>
+        </>
     );
+
 }
 
 export default VideoDetails;

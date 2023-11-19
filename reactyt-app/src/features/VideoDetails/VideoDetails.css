@@ -1,3 +1,58 @@
 .Detalles {
     margin-top: 5%;
+    display: grid;
+    grid-template-areas: "titulo titulo titulo"
+        "video video detalles";
+    gap: 20px;
+    margin: 0 auto;
+    margin-top: 5%;
+
+
+
+}
+
+.Detalles>h2 {
+    color: aliceblue;
+    grid-area: titulo;
+}
+
+.Detalles>img {
+    grid-area: video;
+    width: 100%;
+}
+
+p {
+    color: aliceblue;
+    grid-area: detalles;
+    align-self: center;
+    width: 80%;
+}
+
+@media screen and (max-width: 600px) {
+    .Detalles {
+        grid-template-areas: "titulo"
+            "video" "detalles";
+        gap: 20px;
+        margin: 0 auto;
+        margin-top: 5%;
+        width: 80%;
+    }
+
+    .Detalles>h2 {
+        color: aliceblue;
+        grid-area: titulo;
+    }
+
+    .Detalles>img {
+        grid-area: video;
+        width: 100%;
+    }
+
+    p {
+        color: aliceblue;
+        grid-area: detalles;
+        align-self: center;
+        width: 80%;
+    }
+
 }

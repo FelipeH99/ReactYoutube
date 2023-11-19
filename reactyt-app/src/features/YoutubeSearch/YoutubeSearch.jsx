@@ -69,7 +69,7 @@ const YouTubeSearch = () => {
                         index !== 0 && (
                             <div className='sideVideo' key={index} onClick={() => handleVideoClick(video)}>
                                 <img src={video.snippet.thumbnails.default.url} alt={video.snippet.title} />
-                                <span>{video.snippet.title}</span>
+                                <span className='titles'>{video.snippet.title}</span>
                             </div>
                         )
                     ))}

@@ -144,6 +144,10 @@
     margin-bottom: 20px;
 }
 
+span.titles {
+    color: aliceblue;
+}
+
 .VideoPlayer img {
     width: 25%;
     height: 60%;
@@ -158,9 +162,13 @@
 
 /* Media query for screens smaller than 600px */
 @media (max-width: 600px) {
+    .SearchForm {
+        width: 100%;
+    }
 
     .yt>iframe {
-
+        width: 100%;
+        height: auto;
         min-height: auto;
 
     }
