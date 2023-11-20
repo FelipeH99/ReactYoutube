@@ -8,16 +8,16 @@ import Layout from "../layout/Layout";
 export default function Router() {
     return useRoutes([
         {
-            path: "/",
+            path: "/ReactYoutube/",
             element: <Layout />,
             children: [
                 {
-                    path: "/",
+                    path: "/ReactYoutube/",
                     element: <YouTubeSearch />
                     ,
                 },
                 {
-                    path: "/details/:videoId",
+                    path: "/ReactYoutube/details/:videoId",
                     element: <VideoDetails />,
                 },
             ],
