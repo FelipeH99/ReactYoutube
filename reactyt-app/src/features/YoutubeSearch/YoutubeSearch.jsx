@@ -46,11 +46,9 @@ const YouTubeSearch = () => {
     };
 
 
-    // Restaura el mainVideo cuando regresas de VideoDetails
     useEffect(() => {
-        // Verifica si hay videos y establece el primer video como el principal
         if (videos.length > 0) {
-            setMainVideo(videos[0]);
+            setMainVideo(mainVideo);
 
         }
     }, [videos, setMainVideo]);
