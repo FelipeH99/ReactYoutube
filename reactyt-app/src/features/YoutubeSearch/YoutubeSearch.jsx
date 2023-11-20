@@ -47,7 +47,7 @@ const YouTubeSearch = () => {
 
 
     useEffect(() => {
-        if (videos.length > 0) {
+        if (notnull(videos) && videos.length > 0) {
             setMainVideo(mainVideo);
 
         }
