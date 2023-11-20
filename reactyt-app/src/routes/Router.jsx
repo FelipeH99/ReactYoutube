@@ -12,12 +12,13 @@ export default function Router() {
             element: <Layout />,
             children: [
                 {
-                    path: "/ReactYoutube/",
-                    element: <YouTubeSearch />
-                    ,
+                    // Ruta principal, renderiza YouTubeSearch
+                    index: true,
+                    element: <YouTubeSearch />,
                 },
                 {
-                    path: "/ReactYoutube/details/:videoId/",
+                    // Ruta de detalles, renderiza VideoDetails
+                    path: "details/:videoId/",
                     element: <VideoDetails />,
                 },
             ],
