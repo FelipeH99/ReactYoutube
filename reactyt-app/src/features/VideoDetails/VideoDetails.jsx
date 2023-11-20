@@ -11,7 +11,6 @@ const VideoDetails = () => {
     const { videos, updateVideos } = useVideoContext();
 
     useEffect(() => {
-        // Restaura los videos del contexto si existen
         if (videos.length > 0) {
             updateVideos(videos);
         }

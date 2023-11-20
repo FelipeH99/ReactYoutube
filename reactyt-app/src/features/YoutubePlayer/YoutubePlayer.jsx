@@ -19,7 +19,7 @@ const YouTubePlayer = ({ videoId }) => {
     const onReady = (event) => {
         event.target.pauseVideo();
     }
-    const onPlay = (event) => {
+    const onPlay = () => {
         if (firstPlay) {
             incrementVideosWatchedCount();
             setFirstplay(false);
