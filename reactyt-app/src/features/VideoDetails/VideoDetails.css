@@ -1,4 +1,4 @@
-.Detalles {
+.detalles {
     margin-top: 5%;
     display: grid;
     grid-template-areas: "titulo titulo titulo"
@@ -11,12 +11,12 @@
 
 }
 
-.Detalles>h2 {
+.detalles>h2 {
     color: aliceblue;
     grid-area: titulo;
 }
 
-.Detalles>img {
+.detalles>img {
     grid-area: video;
     width: 100%;
 }
@@ -28,8 +28,20 @@ p {
     width: 80%;
 }
 
+button {
+    &:hover {
+        background-color: #666;
+    }
+
+    &:active {
+        background-color: #323832;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
+}
+
 @media screen and (max-width: 600px) {
-    .Detalles {
+    .detalles {
         grid-template-areas: "titulo"
             "video" "detalles";
         gap: 20px;
@@ -38,12 +50,12 @@ p {
         width: 80%;
     }
 
-    .Detalles>h2 {
+    .detalles>h2 {
         color: aliceblue;
         grid-area: titulo;
     }
 
-    .Detalles>img {
+    .detalles>img {
         grid-area: video;
         width: 100%;
     }

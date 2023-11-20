@@ -5,7 +5,7 @@ import './VideoDetails.css';
 const VideoDetails = () => {
     const { videoId } = useParams();
     const [video, setVideo] = useState(null);
-    const apikey = "AIzaSyAMxpgKM8np3dsTLsV_aAFSFUMV7tKnqV0";
+    const apikey = "AIzaSyCSNPxOrKhYPPMLZXVcaUeMk9JtGs1Gzbo";
 
     useEffect(() => {
         fetch(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${apikey}&part=snippet,contentDetails,statistics,status`)
@@ -19,14 +19,19 @@ const VideoDetails = () => {
     return (
         <>
             <button onClick={() => window.history.back()}>Volver</button>
-            <div className='Detalles'>
+            <div className='detalles'>
 
                 {video && (
                     <>
                         <img src={video.snippet.thumbnails.standard.url} alt={video.snippet.title} />
                         <h2>{video.snippet.title}</h2>
-                        <p>{video.snippet.description}</p>
-                        {/* Aquí puedes agregar más detalles del video como las vistas, los likes, etc. */}
+                        <div className="video-stats">
+                            <p>{video.snippet.description}</p>
+                            <p>Vistas: {video.statistics.viewCount}</p>
+                            <p>Likes: {video.statistics.likeCount}</p>
+                            <p>Fecha de Publicación: {new Date(video.snippet.publishedAt).toLocaleDateString()}</p>
+                            {/* Puedes agregar más detalles según tus necesidades */}
+                        </div>
                     </>
                 )}
             </div>
