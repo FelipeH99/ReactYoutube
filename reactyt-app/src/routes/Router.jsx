@@ -17,7 +17,7 @@ export default function Router() {
                     ,
                 },
                 {
-                    path: "/ReactYoutube/details/:videoId",
+                    path: "/ReactYoutube/details/:videoId/",
                     element: <VideoDetails />,
                 },
             ],
