@@ -18,7 +18,7 @@ export default function Router() {
                 },
                 {
                     // Ruta de detalles, renderiza VideoDetails
-                    path: "details/:videoId/",
+                    path: "details/:videoId",
                     element: <VideoDetails />,
                 },
             ],
