@@ -1,3 +1,14 @@
+This proyect was created using React.js by Felipe Heredia.
+
+Deployed app link: https://felipeh99.github.io/ReactYoutube/
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

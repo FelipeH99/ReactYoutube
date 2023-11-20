@@ -10,7 +10,7 @@ export default function Layout() {
         <Container className="contNav">
           <Navbar.Brand style={{ color: 'red' }}>ReactYoutube</Navbar.Brand>
           <Nav>
-            <Nav.Link as={Link} to="/">
+            <Nav.Link as={Link} to="/ReactYoutube/">
               Home
             </Nav.Link>
             <Nav.Link as={Link} to="https://wa.me/+59894314684">
