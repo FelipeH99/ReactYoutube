@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useVideoContext } from '../VideoContext/VideoContext';
+
+
 import './VideoDetails.css';
 
 const VideoDetails = () => {
@@ -9,6 +11,7 @@ const VideoDetails = () => {
     const apikey = "AIzaSyCSNPxOrKhYPPMLZXVcaUeMk9JtGs1Gzbo";
     const apikey2 = 'AIzaSyAMxpgKM8np3dsTLsV_aAFSFUMV7tKnqV0'
     const { videos, updateVideos } = useVideoContext();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (videos.length > 0) {
@@ -25,7 +28,7 @@ const VideoDetails = () => {
 
     return (
         <>
-            <button className='backButton' onClick={() => window.history.back()}>Volver</button>
+            <button className='backButton' onClick={() => navigate('/ReactYoutube/')}>Volver</button>
             <div className='detalles'>
 
                 {video && (

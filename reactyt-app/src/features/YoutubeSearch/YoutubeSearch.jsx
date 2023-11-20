@@ -42,7 +42,7 @@ const YouTubeSearch = () => {
     }
     const handleDetailsClick = (videoId) => {
         updateVideos(videos);
-        navigate(`/details/${videoId}/`);
+        navigate('/details/${videoId}/');
     };
 
 
