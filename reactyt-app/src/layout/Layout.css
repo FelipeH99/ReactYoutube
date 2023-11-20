@@ -1,0 +1,33 @@
+.header {
+    position: flex;
+    text-align: center;
+    z-index: 200;
+    color: rgb(12, 124, 223);
+    top: 0;
+    width: 100%;
+    height: 60px;
+}
+
+h2 {
+    color: aliceblue
+}
+
+#text {
+    color: aliceblue;
+}
+
+.contNav {
+    display: flex;
+    justify-content: space-around;
+    align-items: auto;
+
+}
+
+.contNav>ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
