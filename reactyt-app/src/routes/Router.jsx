@@ -12,11 +12,11 @@ export default function Router() {
             element: <Layout />,
             children: [
                 {
-                    path: "",  // Cambiado a ruta relativa
+                    path: "",
                     element: <YouTubeSearch />,
                 },
                 {
-                    path: "details/:videoId",  // Cambiado a ruta relativa
+                    path: "details/:videoId",
                     element: <VideoDetails />,
                 },
             ],
