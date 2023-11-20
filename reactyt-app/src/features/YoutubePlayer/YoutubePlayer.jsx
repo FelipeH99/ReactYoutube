@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import YouTube from 'react-youtube';
 import { VideoContext } from '../VideoContext/VideoContext';
-import './YoutubePlayer.css';
 
 const YouTubePlayer = ({ videoId }) => {
     const opts = {
@@ -14,9 +13,9 @@ const YouTubePlayer = ({ videoId }) => {
     useEffect(() => {
         setFirstplay(true);
     }, [videoId]);
-    const [firstPlay, setFirstplay] = useState(true); // Nuevo estado para el contado
+    const [firstPlay, setFirstplay] = useState(true);
 
-    const { incrementVideosWatchedCount } = useContext(VideoContext); // Nuevo estado para el contado
+    const { incrementVideosWatchedCount } = useContext(VideoContext);
     const onReady = (event) => {
         event.target.pauseVideo();
     }
@@ -31,5 +30,3 @@ const YouTubePlayer = ({ videoId }) => {
 }
 
 export default YouTubePlayer;
-
-//AIzaSyDiwcdrnpEiLrZzpynoIxEB6NgjkZSKS1A

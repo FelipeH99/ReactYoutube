@@ -1,24 +1,32 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useVideoContext } from '../VideoContext/VideoContext';
 import './VideoDetails.css';
 
 const VideoDetails = () => {
     const { videoId } = useParams();
     const [video, setVideo] = useState(null);
     const apikey = "AIzaSyCSNPxOrKhYPPMLZXVcaUeMk9JtGs1Gzbo";
+    const apikey2 = 'AIzaSyAMxpgKM8np3dsTLsV_aAFSFUMV7tKnqV0'
+    const { videos, updateVideos } = useVideoContext();
 
     useEffect(() => {
+        // Restaura los videos del contexto si existen
+        if (videos.length > 0) {
+            updateVideos(videos);
+        }
+
         fetch(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${apikey}&part=snippet,contentDetails,statistics,status`)
             .then(response => response.json())
             .then(data => {
                 setVideo(data.items[0]);
             })
             .catch(error => console.log(error));
-    }, [videoId]);
+    }, [videoId, videos, updateVideos]);
 
     return (
         <>
-            <button onClick={() => window.history.back()}>Volver</button>
+            <button className='backButton' onClick={() => window.history.back()}>Volver</button>
             <div className='detalles'>
 
                 {video && (
@@ -30,7 +38,6 @@ const VideoDetails = () => {
                             <p>Vistas: {video.statistics.viewCount}</p>
                             <p>Likes: {video.statistics.likeCount}</p>
                             <p>Fecha de Publicación: {new Date(video.snippet.publishedAt).toLocaleDateString()}</p>
-                            {/* Puedes agregar más detalles según tus necesidades */}
                         </div>
                     </>
                 )}

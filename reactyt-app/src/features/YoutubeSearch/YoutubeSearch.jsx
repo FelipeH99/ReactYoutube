@@ -5,16 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import { VideoContext } from '../VideoContext/VideoContext';
 import YouTubePlayer from '../YoutubePlayer/YoutubePlayer';
 import './YoutubeSearch.css';
-
 const YouTubeSearch = () => {
 
     const [query, setQuery] = useState('');
-    const [videos, setVideos] = useState([]);
-    const [mainVideo, setMainVideo] = useState(null);
     const [error, setError] = useState(false);
-    const { videosWatchedCount, incrementVideosWatchedCount } = useContext(VideoContext); // Nuevo estado para el contador
+    const { videosWatchedCount, videos, updateVideos, setMainVideo, mainVideo } = useContext(VideoContext);
     const apikey = "AIzaSyCSNPxOrKhYPPMLZXVcaUeMk9JtGs1Gzbo"
-    //const apikey = 'AIzaSyAMxpgKM8np3dsTLsV_aAFSFUMV7tKnqV0'
+    const apikey2 = 'AIzaSyAMxpgKM8np3dsTLsV_aAFSFUMV7tKnqV0'
     const handleInputChange = (event) => {
         setQuery(event.target.value);
     }
@@ -23,9 +20,9 @@ const YouTubeSearch = () => {
         fetch(`https://www.googleapis.com/youtube/v3/search?q=${query}&type=video&key=${apikey}&part=snippet`)
             .then(response => response.json())
             .then(data => {
-                setVideos(data.items);
+                updateVideos(data.items);
+                setError(false);
                 setMainVideo(data.items[0]);
-                localStorage.setItem('videos', JSON.stringify(data.items)); // Guardar videos en localStorage
             })
             .catch(error => {
                 console.log(error);
@@ -34,9 +31,7 @@ const YouTubeSearch = () => {
     }
     const navigate = useNavigate();
 
-    const handleDetailsClick = (videoId) => {
-        navigate(`/details/${videoId}`);
-    }
+
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
             searchVideos();
@@ -45,14 +40,20 @@ const YouTubeSearch = () => {
     const handleVideoClick = (video) => {
         setMainVideo(video);
     }
+    const handleDetailsClick = (videoId) => {
+        updateVideos(videos);
+        navigate(`/details/${videoId}`);
+    };
 
+
+    // Restaura el mainVideo cuando regresas de VideoDetails
     useEffect(() => {
-        const storedVideos = JSON.parse(localStorage.getItem('videos'));
-        if (storedVideos) {
-            setVideos(storedVideos);
-            setMainVideo(storedVideos[0]);
+        // Verifica si hay videos y establece el primer video como el principal
+        if (videos.length > 0) {
+            setMainVideo(videos[0]);
+
         }
-    }, []);
+    }, [videos, setMainVideo]);
 
     return (
         <>
@@ -83,6 +84,7 @@ const YouTubeSearch = () => {
                     ))}
                     <h2 style={{ fontSize: '1.5rem' }}>Cantidad de videos vistos: {videosWatchedCount}</h2>
                 </div>
+
             </div>
         </>
     );
