@@ -135,6 +135,7 @@
     grid-template-columns: 20% 80%;
     align-items: center;
     max-width: 100%;
+    gap: 4.5rem;
 }
 
 .sideVideo>img {
@@ -200,6 +201,7 @@ span.titles {
         grid-template-areas:
             "image"
             "title";
+        gap: 0;
     }
 
     .sideVideo>img {
