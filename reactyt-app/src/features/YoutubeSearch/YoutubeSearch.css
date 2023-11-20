@@ -52,9 +52,9 @@
     display: grid;
     grid-template-columns: 60% 40%;
     gap: 20px;
-    width: 200%;
     margin: 0 auto;
     margin-top: 5%;
+    width: 60% !important;
 
 }
 
@@ -63,23 +63,25 @@
     justify-content: center;
     align-items: center;
     grid-area: video;
-    width: 100%;
-    max-width: 100%;
+    max-width: 60rem;
+    aspect-ratio: 4/3;
+    margin: 0;
+
 }
 
 .yt>iframe {
     aspect-ratio: 16/9;
     max-width: 100% !important;
     max-height: 100% !important;
-    min-height: 600px;
     height: 100%;
     width: auto;
+
 }
 
 .videoData {
     grid-area: data;
     word-wrap: break-word;
-    max-width: 80%;
+    max-width: 100%;
     padding: 0.3rem;
 }
 
@@ -113,10 +115,8 @@
         "data data side";
 
     row-gap: 1rem;
-    column-gap: 2rem;
-    padding: 1rem;
+    padding: 0.3rem;
     width: 100%;
-    max-width: 100vw;
 }
 
 .sideVideoPanel {
@@ -126,16 +126,15 @@
     grid-area: side;
     row-gap: 1rem;
     padding: 0.3rem;
-    max-width: var(ytd-watch-flexy-max-player-width);
-    min-width: var(ytd-watch-flexy-min-player-width);
 }
 
 .sideVideo {
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 15% 85%;
     align-items: center;
     max-width: 100%;
     gap: 4.5rem;
+    margin-right: 4rem;
 }
 
 .sideVideo>img {
@@ -202,6 +201,7 @@ span.titles {
             "image"
             "title";
         gap: 0;
+        margin: 0;
     }
 
     .sideVideo>img {
