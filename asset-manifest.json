@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/ReactYoutube/static/css/main.3516970f.css",
-    "main.js": "/ReactYoutube/static/js/main.ee42d1d6.js",
-    "static/js/787.6fd887b4.chunk.js": "/ReactYoutube/static/js/787.6fd887b4.chunk.js",
-    "index.html": "/ReactYoutube/index.html",
-    "main.3516970f.css.map": "/ReactYoutube/static/css/main.3516970f.css.map",
-    "main.ee42d1d6.js.map": "/ReactYoutube/static/js/main.ee42d1d6.js.map",
-    "787.6fd887b4.chunk.js.map": "/ReactYoutube/static/js/787.6fd887b4.chunk.js.map"
+    "main.css": "./ReactYoutube/static/css/main.3516970f.css",
+    "main.js": "./ReactYoutube/static/js/main.c7e86fb8.js",
+    "static/js/787.6fd887b4.chunk.js": "./ReactYoutube/static/js/787.6fd887b4.chunk.js",
+    "index.html": "./ReactYoutube/index.html",
+    "main.3516970f.css.map": "./ReactYoutube/static/css/main.3516970f.css.map",
+    "main.c7e86fb8.js.map": "./ReactYoutube/static/js/main.c7e86fb8.js.map",
+    "787.6fd887b4.chunk.js.map": "./ReactYoutube/static/js/787.6fd887b4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3516970f.css",
-    "static/js/main.ee42d1d6.js"
+    "static/js/main.c7e86fb8.js"
   ]
 }
