@@ -33,8 +33,7 @@ const YouTubeSearch = () => {
 
     const SideVideo = ({ video, onClick }) => (
         <div className='sideVideo' onClick={onClick}>
-            <img src={video.snippet.thumbnails.default.url} alt={video.snippet.title} />
-            <span className='titles'>{video.snippet.title}</span>
+            <img src={video.snippet.thumbnails.high.url} alt={video.snippet.title} />
         </div>
     );
 
@@ -57,37 +56,39 @@ const YouTubeSearch = () => {
             setMainVideo(mainVideo);
 
         }
-    }, [videos, setMainVideo]);
+    }, [videos, setMainVideo, mainVideo]);
 
     return (
-        <>
-            <div className='mainContent'>
-                <form className='searchForm' onSubmit={(e) => e.preventDefault()}>
-                    <input type="text" value={query} onChange={handleInputChange} onKeyDown={handleKeyDown} placeholder='Buscar...' />
-                    <FontAwesomeIcon icon={faSearch} className='searchIcon' />
-                    <button onClick={searchVideos} aria-label="Buscar">Buscar</button>
-                </form>
+        <div className='mainContent'>
+            <form className='searchForm' onSubmit={(e) => e.preventDefault()}>
+                <input type="text" value={query} onChange={handleInputChange} onKeyDown={handleKeyDown} placeholder='Buscar...' />
+                <FontAwesomeIcon icon={faSearch} className='searchIcon' />
+            </form>
+            <button className='searchButton' onClick={searchVideos} aria-label="Buscar">
 
-                {error && <p className='error-message'>Hubo un error al buscar los videos. Inténtalo de nuevo más tarde.</p>}
-                {mainVideo && (
-                    <>
-                        <YouTubePlayer videoId={mainVideo.id.videoId} />
-                        <div className='videoData'>
-                            <h2>{mainVideo.snippet.title}</h2>
-                            <button onClick={() => handleDetailsClick(mainVideo.id.videoId)}>Detalles</button>
-                        </div>
-                    </>
-                )}
-                <div className='sideVideoPanel'>
-                    {videos && videos.length > 0 && videos.slice(1, 5).map((video, index) => (
-                        index !== 0 && (
-                            <SideVideo key={index} video={video} onClick={() => handleVideoClick(video)} />
-                        )
-                    ))}
-                    <h2 style={{ fontSize: '1.5rem' }}>Cantidad de videos vistos: {videosWatchedCount}</h2>
-                </div>
+                Buscar</button>
+
+
+            {error && <p className='error-message'>Hubo un error al buscar los videos. Inténtalo de nuevo más tarde.</p>}
+            {mainVideo && (
+                <>
+                    <YouTubePlayer videoId={mainVideo.id.videoId} />
+                    <div className='videoData'>
+                        <h2>{mainVideo.snippet.title}</h2>
+                        <button onClick={() => handleDetailsClick(mainVideo.id.videoId)}>Detalles</button>
+                    </div>
+                </>
+            )}
+            <div className='sideVideoPanel'>
+                {videos && videos.length > 0 && videos.slice(1, 5).map((video, index) => (
+                    index !== 0 && (
+                        <SideVideo key={index} video={video} onClick={() => handleVideoClick(video)} />
+                    )
+                ))}
             </div>
-        </>
+            <span className='watchCount' style={{ fontSize: '1.5rem' }}>Cantidad de videos vistos: {videosWatchedCount}</span>
+
+        </div>
     );
 
 }
