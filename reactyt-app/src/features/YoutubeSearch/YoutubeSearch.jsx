@@ -31,6 +31,12 @@ const YouTubeSearch = () => {
     }
     const navigate = useNavigate();
 
+    const SideVideo = ({ video, onClick }) => (
+        <div className='sideVideo' onClick={onClick}>
+            <img src={video.snippet.thumbnails.default.url} alt={video.snippet.title} />
+            <span className='titles'>{video.snippet.title}</span>
+        </div>
+    );
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
@@ -55,13 +61,14 @@ const YouTubeSearch = () => {
 
     return (
         <>
-            <form className='searchForm' onSubmit={(e) => e.preventDefault()}>
-                <input type="text" value={query} onChange={handleInputChange} onKeyDown={handleKeyDown} placeholder='Buscar...' />
-                <FontAwesomeIcon icon={faSearch} className='searchIcon' />
-                <button onClick={searchVideos}>Buscar</button>
-            </form>
             <div className='mainContent'>
-                {error && <p>Hubo un error al buscar los videos</p>}
+                <form className='searchForm' onSubmit={(e) => e.preventDefault()}>
+                    <input type="text" value={query} onChange={handleInputChange} onKeyDown={handleKeyDown} placeholder='Buscar...' />
+                    <FontAwesomeIcon icon={faSearch} className='searchIcon' />
+                    <button onClick={searchVideos} aria-label="Buscar">Buscar</button>
+                </form>
+
+                {error && <p className='error-message'>Hubo un error al buscar los videos. Inténtalo de nuevo más tarde.</p>}
                 {mainVideo && (
                     <>
                         <YouTubePlayer videoId={mainVideo.id.videoId} />
@@ -74,18 +81,16 @@ const YouTubeSearch = () => {
                 <div className='sideVideoPanel'>
                     {videos && videos.length > 0 && videos.slice(1, 5).map((video, index) => (
                         index !== 0 && (
-                            <div className='sideVideo' key={index} onClick={() => handleVideoClick(video)}>
-                                <img src={video.snippet.thumbnails.default.url} alt={video.snippet.title} />
-                                <span className='titles'>{video.snippet.title}</span>
-                            </div>
+                            <SideVideo key={index} video={video} onClick={() => handleVideoClick(video)} />
                         )
                     ))}
                     <h2 style={{ fontSize: '1.5rem' }}>Cantidad de videos vistos: {videosWatchedCount}</h2>
                 </div>
-
             </div>
         </>
     );
+
 }
+
 
 export default YouTubeSearch;

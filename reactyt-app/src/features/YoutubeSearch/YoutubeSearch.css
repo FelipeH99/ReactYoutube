@@ -1,3 +1,17 @@
+.mainContent {
+    display: grid;
+    grid-template-areas:
+        "search search search"
+        "video video side"
+        "video video side"
+        "video video side"
+        "data data side";
+
+    row-gap: 1rem;
+    padding: 0.3rem;
+    width: 100%;
+}
+
 .searchForm {
     display: flex;
     justify-content: center;
@@ -5,6 +19,7 @@
     width: 60%;
     justify-self: center;
     position: relative;
+    grid-area: search;
 
     &>button {
         margin-left: 10px;
@@ -106,18 +121,7 @@
     transform: translateY(4px);
 }
 
-.mainContent {
-    display: grid;
-    grid-template-areas:
-        "video video side"
-        "video video side"
-        "video video side"
-        "data data side";
 
-    row-gap: 1rem;
-    padding: 0.3rem;
-    width: 100%;
-}
 
 .sideVideoPanel {
     display: grid;
@@ -189,6 +193,7 @@ span.titles {
     .mainContent {
         padding: 0;
         grid-template-areas:
+            "search"
             "video"
             "data"
             "side";
