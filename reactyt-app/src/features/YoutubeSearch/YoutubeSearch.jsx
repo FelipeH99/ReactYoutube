@@ -43,13 +43,10 @@ const YouTubeSearch = () => {
         }
     };
     const handleVideoClick = (clickedVideo) => {
-        // Set the clicked video as the new main video
         setMainVideo(clickedVideo);
 
-        // Find the index of the clicked video in the videos array
         const clickedIndex = videos.findIndex(v => v.id.videoId === clickedVideo.id.videoId);
 
-        // Update the videos array by replacing the clicked video with the previous main video
         if (clickedIndex !== -1) {
             const updatedVideos = [...videos];
             updatedVideos[clickedIndex] = mainVideo;
@@ -71,7 +68,7 @@ const YouTubeSearch = () => {
     }, [videos, setMainVideo, mainVideo]);
 
     return (
-        <>
+        <div className='homeContainer'>
             <div className="topPanel">
                 <form className='searchForm' onSubmit={(e) => e.preventDefault()}>
                     <input type="text" value={query} onChange={handleInputChange} onKeyDown={handleKeyDown} placeholder='Buscar...' />
@@ -89,7 +86,7 @@ const YouTubeSearch = () => {
                             <>
                                 <YouTubePlayer videoId={mainVideo.id.videoId} />
                                 <div className='videoData'>
-                                    <h2>{mainVideo.snippet.title}</h2>
+                                    <span>{mainVideo.snippet.title}</span>
                                     <button onClick={() => handleDetailsClick(mainVideo.id.videoId)}>Detalles</button>
                                 </div>
                             </>
@@ -97,7 +94,7 @@ const YouTubeSearch = () => {
                     </div>
                 </div>
                 <div className='sideVideoPanel'>
-                    {videos && videos.length > 0 && videos.slice(1, 5).map((video, index) => (
+                    {videos && videos.length > 0 && videos.slice(0, 4).map((video, index) => (
                         index !== 0 && (
                             <SideVideo key={index} video={video} onClick={() => {
                                 handleVideoClick(video);
@@ -108,7 +105,7 @@ const YouTubeSearch = () => {
                 </div>
 
             </div >
-        </>
+        </div>
     );
 
 }
