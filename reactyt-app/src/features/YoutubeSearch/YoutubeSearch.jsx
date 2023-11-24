@@ -42,8 +42,16 @@ const YouTubeSearch = () => {
             searchVideos();
         }
     };
-    const handleVideoClick = (video) => {
-        setMainVideo(video);
+    const handleVideoClick = (clickedVideo) => {
+        setMainVideo(clickedVideo);
+
+        const clickedIndex = videos.findIndex(v => v.id.videoId === clickedVideo.id.videoId);
+
+        if (clickedIndex !== -1) {
+            const updatedVideos = [...videos];
+            updatedVideos[clickedIndex] = mainVideo;
+            updateVideos(updatedVideos);
+        }
     }
     const handleDetailsClick = (videoId) => {
         updateVideos(videos);
@@ -55,39 +63,48 @@ const YouTubeSearch = () => {
         if (videos && videos.length > 0) {
             setMainVideo(mainVideo);
 
+
         }
     }, [videos, setMainVideo, mainVideo]);
 
     return (
-        <div className='mainContent'>
-            <form className='searchForm' onSubmit={(e) => e.preventDefault()}>
-                <input type="text" value={query} onChange={handleInputChange} onKeyDown={handleKeyDown} placeholder='Buscar...' />
-                <FontAwesomeIcon icon={faSearch} className='searchIcon' />
-            </form>
-            <button className='searchButton' onClick={searchVideos} aria-label="Buscar">
-
-                Buscar</button>
-
-
-            {error && <p className='error-message'>Hubo un error al buscar los videos. Inténtalo de nuevo más tarde.</p>}
-            {mainVideo && (
-                <>
-                    <YouTubePlayer videoId={mainVideo.id.videoId} />
-                    <div className='videoData'>
-                        <h2>{mainVideo.snippet.title}</h2>
-                        <button onClick={() => handleDetailsClick(mainVideo.id.videoId)}>Detalles</button>
-                    </div>
-                </>
-            )}
-            <div className='sideVideoPanel'>
-                {videos && videos.length > 0 && videos.slice(1, 5).map((video, index) => (
-                    index !== 0 && (
-                        <SideVideo key={index} video={video} onClick={() => handleVideoClick(video)} />
-                    )
-                ))}
+        <div className='homeContainer'>
+            <div className="topPanel">
+                <form className='searchForm' onSubmit={(e) => e.preventDefault()}>
+                    <input type="text" value={query} onChange={handleInputChange} onKeyDown={handleKeyDown} placeholder='Buscar...' />
+                    <FontAwesomeIcon icon={faSearch} className='searchIcon' />
+                </form>
+                <button className='searchButton' onClick={searchVideos} aria-label="Buscar">
+                    Buscar
+                </button>
             </div>
-            <span className='watchCount' style={{ fontSize: '1.5rem' }}>Cantidad de videos vistos: {videosWatchedCount}</span>
+            <div className='mainContent'>
+                <div className='leftPanel'>
+                    <div className='videosPanel'>
+                        {error && <p className='error-message'>Hubo un error al buscar los videos. Inténtalo de nuevo más tarde.</p>}
+                        {mainVideo && (
+                            <>
+                                <YouTubePlayer videoId={mainVideo.id.videoId} />
+                                <div className='videoData'>
+                                    <span>{mainVideo.snippet.title}</span>
+                                    <button onClick={() => handleDetailsClick(mainVideo.id.videoId)}>Detalles</button>
+                                </div>
+                            </>
+                        )}
+                    </div>
+                </div>
+                <div className='sideVideoPanel'>
+                    {videos && videos.length > 0 && videos.slice(0, 4).map((video, index) => (
+                        index !== 0 && (
+                            <SideVideo key={index} video={video} onClick={() => {
+                                handleVideoClick(video);
+                            }} />
+                        )
+                    ))}
+                    <span className='watchCount' style={{ fontSize: '1.5rem' }}>Cantidad de videos vistos: {videosWatchedCount}</span>
+                </div>
 
+            </div >
         </div>
     );
 
